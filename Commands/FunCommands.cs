@@ -25,5 +25,15 @@ namespace normality.Commands
             .SendMessageAsync((numberOne + numberTwo).ToString())
             .ConfigureAwait(false);
         }
+        [Command("subtract")]
+
+        [Description("Subtracts two numbers")]
+        public async Task Subtract(CommandContext ctx, int numberOne, int numberTwo)
+        {
+            await ctx.Channel
+            .SendMessageAsync((numberOne - numberTwo).ToString())
+            .ConfigureAwait(false);
+        }
+
     }
 }
