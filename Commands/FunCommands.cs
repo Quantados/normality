@@ -33,7 +33,10 @@ namespace normality.Commands
             await ctx.Channel
             .SendMessageAsync((numberOne - numberTwo).ToString())
             .ConfigureAwait(false);
+            
+                      
         }
-
+        
+    
     }
 }

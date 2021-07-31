@@ -50,6 +50,8 @@ namespace normality
             Commands = Client.UseCommandsNext(commandsConfig);
 
             Commands.RegisterCommands<FunCommands>();
+            Commands.RegisterCommands<ModerationCmds>();
+
 
             await Client.ConnectAsync();
             await Task.Delay(-1);        
