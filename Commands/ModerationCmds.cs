@@ -45,19 +45,20 @@ namespace normality.Commands
         [RequirePermissions(Permissions.BanMembers)]
         [Hidden]
         public async Task Pardon(CommandContext ctx,
-        [Description("User pardoned")] DiscordMember member)
+        [Description("User pardoned")] DiscordMember user)
+
         {
             await ctx.TriggerTypingAsync();
-            DiscordGuild guild = member.Guild;
+            DiscordGuild guild = user.Guild;
 
             try
             {
-                await guild.UnbanMemberAsync(member);
-                await ctx.RespondAsync($"User @{member.Username}#{member.Discriminator} was pardoned by {ctx.User.Username}");
+                await guild.UnbanMemberAsync(user);
+                await ctx.RespondAsync($"User @{user.Username}#{user.Discriminator} was pardoned by {ctx.User.Username}");
             }
             catch (Exception)
             {
-                await ctx.RespondAsync($"There was an error trying to unban {member.Username}");
+                await ctx.RespondAsync($"User {user.Username} cannot be pardoned");
             }
         }
 
