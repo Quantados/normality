@@ -36,7 +36,30 @@ namespace normality.Commands
             }
         }
 
+        
+        
+        
+        
+        [Command("pardon")]
+        [Description("Pardon user from this server.")]
+        [RequirePermissions(Permissions.BanMembers)]
+        [Hidden]
+        public async Task Pardon(CommandContext ctx,
+        [Description("User pardoned")] DiscordMember member)
+        {
+            await ctx.TriggerTypingAsync();
+            DiscordGuild guild = member.Guild;
 
+            try
+            {
+                await guild.UnbanMemberAsync(member);
+                await ctx.RespondAsync($"User @{member.Username}#{member.Discriminator} was pardoned by {ctx.User.Username}");
+            }
+            catch (Exception)
+            {
+                await ctx.RespondAsync($"There was an error trying to unban {member.Username}");
+            }
+        }
 
 
     }
